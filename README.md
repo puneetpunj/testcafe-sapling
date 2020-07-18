@@ -1,4 +1,4 @@
-# testcafe-sampling
+# testcafe-sapling
 
 ## Execution Commands
 
