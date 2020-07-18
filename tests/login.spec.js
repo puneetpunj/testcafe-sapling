@@ -1,13 +1,8 @@
 import { Selector, t } from 'testcafe';
-import LoginPage from '../page-objects/Login.page';
-import Navbar from '../page-objects/Navbar';
-
-const navbar = new Navbar();
-const loginPage = new LoginPage();
 
 fixture`Login Test`.page`http://zero.webappsecurity.com/index.html`;
 
-test('User cannot login with invalid credentials', async (t) => {
+test.only('User cannot login with invalid credentials', async (t) => {
 
   // navbar.clickSignInButton();
   const signInButton = Selector('#signin_button');

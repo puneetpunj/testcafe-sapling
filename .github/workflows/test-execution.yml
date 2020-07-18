@@ -2,24 +2,24 @@ name: Testcafe Test Execution
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
 jobs:
-  build:
-
+  test:
+    name: Run TestCafe Tests
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        node-version: [10.x, 12.x, 14.x]
+        node-version: [14.x]
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
-    - run: npm ci
-    - run: npm run test:chrome
+      - name: Check out the repository
+      - uses: actions/checkout@v2
+
+      - name: Run tests
+        uses: DevExpress/testcafe-action@latest
+        with:
+          args: 'chromium,firefox /tests/**/*.spec.js'
