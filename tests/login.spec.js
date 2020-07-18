@@ -5,7 +5,7 @@ import Navbar from '../page-objects/Navbar';
 const navbar = new Navbar();
 const loginPage = new LoginPage();
 
-fixture`Login test`.page`http://zero.webappsecurity.com/index.html`;
+fixture`Login Test`.page`http://zero.webappsecurity.com/index.html`;
 
 test('User cannot login with invalid credentials', async (t) => {
 

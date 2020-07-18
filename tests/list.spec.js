@@ -2,7 +2,7 @@ import { Selector, t } from 'testcafe';
 
 import { ClientFunction } from 'testcafe';
 
-fixture`Get sale amount`
+fixture`List Test`
     .page('https://js.devexpress.com/');
 
 const getSalesAmount = ClientFunction(() => {
@@ -22,10 +22,8 @@ const getSalesAmount = ClientFunction(() => {
     return array;
 });
 
-test.only('My test', async t => {
-    console.log('object');
+test('Validate all list values are retrieved succesful', async t => {
     const a = await getSalesAmount();
-    console.log(a)
     await t
         .expect(a).eql([
             { sales: '$6,370', customer: 'Renewable Supplies' },
