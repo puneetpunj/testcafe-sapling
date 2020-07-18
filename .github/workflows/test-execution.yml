@@ -22,4 +22,4 @@ jobs:
       - name: Run tests
         uses: DevExpress/testcafe-action@latest
         with:
-          args: 'chrome,firefox /tests/**/*.spec.js'
+          args: 'chrome,firefox tests'
