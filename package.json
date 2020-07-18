@@ -10,12 +10,14 @@
     "test:chrome:2": "npx testcafe -c 2 chrome ./tests",
     "test:chrome:headless": "npx testcafe chrome:headless ./tests",
     "test:multiple": "npx testcafe chrome,firefox ./tests -s takeOnFail=true",
-    "test:iphoneX": "npx testcafe chrome:emulation:device=iphoneX ./tests -s takeOnFail=true"
+    "test:iphoneX": "npx testcafe chrome:emulation:device=iphoneX ./tests -s takeOnFail=true",
+    "docker:build": "docker build -t testcafeimage .",
+    "docker:run": "docker run -u root -v \"`pwd`/tests\":/tests -i testcafeimage chromium,firefox /tests/**/*.spec.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "testcafe": "^1.8.8"
+    "testcafe": "1.7.0"
   }
 }
