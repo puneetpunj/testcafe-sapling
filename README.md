@@ -23,4 +23,4 @@
 
   Right click on any test and click `Testcafe: Run Test(s) in Chrome`
 
-  ![alt text](img/Test Runner Extension.png)
+  ![alt text](img/TestRunnerExtension.jpg)
