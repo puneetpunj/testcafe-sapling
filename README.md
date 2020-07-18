@@ -15,3 +15,12 @@
 `npm run test:multiple` - execute tests in chrome and firefox browsers simultaneously
 
 `npm run test:iphoneX` - execute tests in chrome browser using iphone X emulator. Also, takes screenshot on failure
+
+## Useful Visual Studio Code Extensions
+
+- TestCafe Snippets
+- TestCafe Test Runner
+
+  Right click on any test and click `Testcafe: Run Test(s) in Chrome`
+
+  ![alt text](img/Test Runner Extension.png)
