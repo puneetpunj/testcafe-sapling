@@ -1,8 +1,7 @@
 {
   "name": "testcafe-typescript",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Boiler plate for tescafe automation framework",
   "scripts": {
     "test:chrome": "npx testcafe chrome ./tests -s takeOnFails=true ",
     "test:firefox": "npx testcafe firefox ./tests",
@@ -11,12 +10,14 @@
     "test:chrome:headless": "npx testcafe chrome:headless ./tests",
     "test:multiple": "npx testcafe chrome,firefox ./tests  -s takeOnFails=true --reporter allure ; npm run generate:report",
     "test:iphoneX": "npx testcafe chrome:emulation:device=iphoneX ./tests -s takeOnFail=true",
-    "docker:build": "docker build -t testcafeimage .",
-    "docker:run": "docker run -u root -v \"`pwd`/tests\":/tests -v -i testcafeimage firefox /tests/**/*.spec.js",
-    "generate:report": "allure generate allure/allure-results --clean -o allure/allure-report && allure open allure/allure-report"
+    "docker:build": "docker build -t testcafeimage -f Docker/dockerfile .",
+    "docker:build:allure": "docker build -t testcafeimage -f Docker/dockerfile-allure-reporting .",
+    "docker:run": "docker run -u root -v \"`pwd`/tests\":/app/tests -v \"`pwd`/allure\":/app/allure -i testcafeimage \"chromium:headless,firefox\" tests/**/*.js --skip-js-errors --reporter allure",
+    "generate:report": "allure generate allure/allure-results --clean -o allure/allure-report && allure open allure/allure-report",
+    "docker:sh": " docker run -u root -v \"`pwd`/tests\":/app/tests -it --entrypoint /bin/sh testcafeimage"
   },
   "keywords": [],
-  "author": "",
+  "author": "Puneet Punj",
   "license": "ISC",
   "dependencies": {
     "testcafe": "^1.8.8",
