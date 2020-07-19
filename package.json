@@ -4,20 +4,22 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test:chrome": "npx testcafe chrome ./tests",
+    "test:chrome": "npx testcafe chrome ./tests -s takeOnFails=true ",
     "test:firefox": "npx testcafe firefox ./tests",
     "test:safari": "npx testcafe safari ./tests",
     "test:chrome:2": "npx testcafe -c 2 chrome ./tests",
     "test:chrome:headless": "npx testcafe chrome:headless ./tests",
-    "test:multiple": "npx testcafe chrome,firefox ./tests -s takeOnFail=true",
+    "test:multiple": "npx testcafe chrome,firefox ./tests  -s takeOnFails=true --reporter allure ; npm run generate:report",
     "test:iphoneX": "npx testcafe chrome:emulation:device=iphoneX ./tests -s takeOnFail=true",
     "docker:build": "docker build -t testcafeimage .",
-    "docker:run": "docker run -u root -v \"`pwd`/tests\":/tests -i testcafeimage chromium,firefox /tests/**/*.spec.js"
+    "docker:run": "docker run -u root -v \"`pwd`/tests\":/tests -v -i testcafeimage firefox /tests/**/*.spec.js",
+    "generate:report": "allure generate allure/allure-results --clean -o allure/allure-report && allure open allure/allure-report"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "testcafe": "1.7.0"
+    "testcafe": "^1.8.8",
+    "testcafe-reporter-allure": "^1.0.5"
   }
 }

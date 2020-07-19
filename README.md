@@ -16,6 +16,10 @@
 
 `npm run test:iphoneX` - execute tests in chrome browser using iphone X emulator. Also, takes screenshot on failure
 
+`npm run docker:build` - build docker image
+
+`npm run docker:run` - execute tests in docker image
+
 ## Useful Visual Studio Code Extensions
 
 - TestCafe Snippets
