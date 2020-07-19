@@ -1,33 +1,23 @@
 import { Selector, t } from 'testcafe';
+import LoginPage from "../page-objects/Login.page";
+import Navbar from "../page-objects/Navbar";
+
+const loginPage = new LoginPage();
+const navbar = new Navbar();
 
 fixture`Login Test`.page`http://zero.webappsecurity.com/index.html`;
 
 test('User cannot login with invalid credentials', async (t) => {
 
-  // navbar.clickSignInButton();
-  const signInButton = Selector('#signin_button');
-  const loginForm = Selector('#login_form');
-  await t.click(signInButton);
-  await t.expect(loginForm.exists).ok();
+  await navbar.clickSignInButton();
 
-
-  // loginPage.enterUsernameAndPassword('invalid', 'invalid');
-  // loginPage.checkErrorMessage('Login and/or password are wrong');
-
-  const usernameInput = Selector('#user_login');
-  const passwordInput = Selector('#user_password');
-  const submitButton = Selector('.btn-primary');
-  const errorMessage = Selector('.alert-error').innerText;
-  await t
-    .typeText(usernameInput, 'invalid', { paste: true })
-    .typeText(passwordInput, 'invalid', { paste: true })
-    .click(submitButton);
-  await t.expect(errorMessage).contains('Login and/or password are wrong.');
+  await loginPage.enterUsernameAndPassword('invalid', 'invalid');
+  await loginPage.checkErrorMessage('Login and/or password are wrong');
 
 });
 
 
-test('User can login to application with valid credentials', async (t) => {
+test.skip('User can login to application with valid credentials', async (t) => {
 
   await t.setPageLoadTimeout(50000)
 

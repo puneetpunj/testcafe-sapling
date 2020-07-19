@@ -3,7 +3,7 @@ import { Selector, t } from 'testcafe';
 fixture`Login Test`
     .page`https://www.saucedemo.com/`;
 
-test.only('validate user is able to login to sauce demo site', async t => {
+test('validate user is able to login to sauce demo site', async t => {
 
     const usernameInput = Selector('#user-name');
     const passwordInput = Selector('#password');

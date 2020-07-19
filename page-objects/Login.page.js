@@ -17,7 +17,7 @@ class LoginPage {
   }
 
   async checkErrorMessage(errorMessage) {
-    await t.expect(errorMessage.innertext).contains(errorMessage);
+    await t.expect(this.errorMessage.innerText).contains(errorMessage);
   }
 
 }
