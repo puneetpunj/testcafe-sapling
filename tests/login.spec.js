@@ -2,7 +2,7 @@ import { Selector, t } from 'testcafe';
 
 fixture`Login Test`.page`http://zero.webappsecurity.com/index.html`;
 
-test.only('User cannot login with invalid credentials', async (t) => {
+test('User cannot login with invalid credentials', async (t) => {
 
   // navbar.clickSignInButton();
   const signInButton = Selector('#signin_button');
