@@ -1,0 +1,11 @@
+version: '3.4'
+
+services:
+  testcafe:
+    volumes:
+      - .:/app
+      - /app/node_modules/
+    user: root
+    build:
+      context: .
+      dockerfile: ./Docker/dockerfile

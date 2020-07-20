@@ -2,6 +2,8 @@
 
 ## Execution Commands
 
+`npm run test:docker` - execute tests in docker image and generate allure report
+
 `npm run test:chrome` - execute tests in chrome browser
 
 `npm run test:firefox` - execute tests in firefox browser
@@ -15,10 +17,6 @@
 `npm run test:multiple` - execute tests in chrome and firefox browsers simultaneously
 
 `npm run test:iphoneX` - execute tests in chrome browser using iphone X emulator. Also, takes screenshot on failure
-
-`npm run docker:build` - build docker image
-
-`npm run docker:run` - execute tests in docker image
 
 ## Useful Visual Studio Code Extensions
 
