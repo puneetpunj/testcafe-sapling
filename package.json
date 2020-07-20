@@ -15,7 +15,8 @@
     "docker:run": "docker run -u root -v \"`pwd`/tests\":/app/tests -v \"`pwd`/allure\":/app/allure -i testcafeimage \"chromium:headless,firefox\" tests/**/*.js --skip-js-errors --reporter allure",
     "generate:report": "allure generate allure/allure-results --clean -o allure/allure-report && allure open allure/allure-report",
     "docker:sh": " docker run -u root -v \"`pwd`/tests\":/app/tests -it --entrypoint /bin/sh testcafeimage",
-    "test:percy": "percy exec -- npx testcafe chrome ./tests"
+    "test:percy": "percy exec -- npx testcafe chrome ./tests",
+    "test:saucedemo": "npx testcafe chrome ./tests --fixture-meta testType=sauceDemo -s takeOnFails=true "
   },
   "keywords": [
     "testcafe",

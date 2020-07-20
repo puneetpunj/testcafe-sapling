@@ -1,7 +1,8 @@
 import { Selector, t } from 'testcafe';
 
-fixture`Login Test`
-    .page`https://www.saucedemo.com/`;
+fixture(`Login Test`)
+    .page(`https://www.saucedemo.com/`)
+    .meta('testType', 'sauceDemo')
 
 test('validate user is able to login to sauce demo site', async t => {
 
