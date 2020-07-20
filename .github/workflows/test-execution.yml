@@ -13,7 +13,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [10.x]
+        node-version: [14.x]
 
     steps:
       - name: Check out the repository
@@ -22,4 +22,4 @@ jobs:
       - name: Run tests
         uses: DevExpress/testcafe-action@latest
         with:
-          args: 'chrome,firefox tests'
+          args: 'chrome tests --reporter allure'
