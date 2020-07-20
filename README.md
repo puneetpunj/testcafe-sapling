@@ -28,3 +28,13 @@
   Right click on any test and click `Testcafe: Run Test(s) in Chrome`
 
   ![alt text](img/TestRunnerExtension.jpg)
+
+## Visual Testing with Percy
+
+- If you don't already have a project in percy. Go to https://percy.io/ and create one.
+- Get the token for your project under `Project settings" tab.
+- Create new file with name `.env` and update `PERCY_TOKEN`. Refer to .env.example
+- Go to "Integrations" tab and add integration for your github repository to view visual test results in git itself
+- Execute tests using `npm run test:percy`
+
+  ![alt text](img/PercyGit.jpg)

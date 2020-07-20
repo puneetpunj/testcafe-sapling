@@ -14,13 +14,22 @@
     "docker:build:allure": "docker build -t testcafeimage -f Docker/dockerfile-allure-reporting .",
     "docker:run": "docker run -u root -v \"`pwd`/tests\":/app/tests -v \"`pwd`/allure\":/app/allure -i testcafeimage \"chromium:headless,firefox\" tests/**/*.js --skip-js-errors --reporter allure",
     "generate:report": "allure generate allure/allure-results --clean -o allure/allure-report && allure open allure/allure-report",
-    "docker:sh": " docker run -u root -v \"`pwd`/tests\":/app/tests -it --entrypoint /bin/sh testcafeimage"
+    "docker:sh": " docker run -u root -v \"`pwd`/tests\":/app/tests -it --entrypoint /bin/sh testcafeimage",
+    "test:percy": "percy exec -- npx testcafe chrome ./tests"
   },
-  "keywords": [],
+  "keywords": [
+    "testcafe",
+    "e2etests",
+    "automatedtests"
+  ],
   "author": "Puneet Punj",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^8.2.0",
     "testcafe": "^1.8.8",
     "testcafe-reporter-allure": "^1.0.5"
+  },
+  "devDependencies": {
+    "@percy/testcafe": "^0.2.0"
   }
 }
