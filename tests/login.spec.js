@@ -16,7 +16,6 @@ test('User cannot login with invalid credentials', async (t) => {
 
 });
 
-
 test.skip('User can login to application with valid credentials', async (t) => {
 
   await t.setPageLoadTimeout(50000)

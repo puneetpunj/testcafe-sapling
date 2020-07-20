@@ -1,7 +1,8 @@
 import { ClientFunction } from 'testcafe';
 
-fixture`List Test`
-    .page('https://js.devexpress.com/');
+fixture(`List Test`)
+    .page('https://js.devexpress.com/')
+    .meta('testType', 'print values in a list')
 
 const getSalesAmount = ClientFunction(() => {
     const grid = document.querySelector('.dx-datagrid-rowsview');
@@ -20,7 +21,7 @@ const getSalesAmount = ClientFunction(() => {
     return array;
 });
 
-test.skip('Validate all list values are retrieved succesful', async t => {
+test('Validate all list values are retrieved succesful', async t => {
     const a = await getSalesAmount();
     await t
         .expect(a).eql([

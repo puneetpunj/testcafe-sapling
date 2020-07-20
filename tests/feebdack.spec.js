@@ -7,7 +7,7 @@ fixture`Feedback test`
     .page`http://zero.webappsecurity.com/index.html`;
 
 
-test.only('Fill the Feedback Form', async t => {
+test('Fill the Feedback Form', async t => {
     const feedbackLink = Selector('#feedback');
     await t.click(feedbackLink);
 
