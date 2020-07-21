@@ -30,7 +30,8 @@
   "dependencies": {
     "dotenv": "^8.2.0",
     "testcafe": "^1.8.8",
-    "testcafe-reporter-allure": "^1.0.5"
+    "testcafe-reporter-allure": "^1.0.5",
+    "xpath-to-css": "^1.0.5"
   },
   "devDependencies": {
     "@percy/testcafe": "^0.2.0"
