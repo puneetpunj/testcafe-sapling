@@ -12,4 +12,4 @@ class Navbar {
   }
 }
 
-export default Navbar;
+export default new Navbar();

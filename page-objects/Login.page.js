@@ -22,4 +22,4 @@ class LoginPage {
 
 }
 
-export default LoginPage;
+export default new LoginPage();

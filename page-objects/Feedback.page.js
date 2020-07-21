@@ -26,4 +26,4 @@ class FeedbackPage {
 
 }
 
-export default FeedbackPage;
+export default new FeedbackPage();

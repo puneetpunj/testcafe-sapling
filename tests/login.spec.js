@@ -2,17 +2,14 @@ import { Selector, t } from 'testcafe';
 import LoginPage from "../page-objects/Login.page";
 import Navbar from "../page-objects/Navbar";
 
-const loginPage = new LoginPage();
-const navbar = new Navbar();
-
 fixture`Login Test`.page`http://zero.webappsecurity.com/index.html`;
 
 test('User cannot login with invalid credentials', async (t) => {
 
-  await navbar.clickSignInButton();
+  await Navbar.clickSignInButton();
 
-  await loginPage.enterUsernameAndPassword('invalid', 'invalid');
-  await loginPage.checkErrorMessage('Login and/or password are wrong');
+  await LoginPage.enterUsernameAndPassword('invalid', 'invalid');
+  await LoginPage.checkErrorMessage('Login and/or password are wrong');
 
 });
 
