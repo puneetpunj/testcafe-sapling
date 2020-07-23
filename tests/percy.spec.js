@@ -6,7 +6,7 @@ fixture(`Visual Regression test with Percy`)
     .meta('testType', 'visual')
     .page(`www.example.com`)
 
-test('Visual test', async t => {
+test.skip('Visual test', async t => {
     await t.wait(1000);
     await percySnapshot(t, 'Example Page');
 })
