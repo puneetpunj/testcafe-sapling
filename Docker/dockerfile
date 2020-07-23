@@ -16,4 +16,4 @@ WORKDIR /app
 COPY . .
 RUN npm i
 
-CMD npm run execute:test:generate:report
+CMD ls -la && npm run execute:test:generate:report
