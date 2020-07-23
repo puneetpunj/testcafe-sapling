@@ -1,4 +1,4 @@
-import { Role } from 'testcafe';
+import { Role, Selector } from 'testcafe';
 
 const standardUser = Role('https://www.saucedemo.com/', async t => {
     await t
@@ -12,6 +12,10 @@ const lockedOutUser = Role('https://www.saucedemo.com/', async t => {
         .typeText('#user-name', 'locked_out_user')
         .typeText('#password', 'secret_sauce')
         .click('#login-button');
+
+    const errorMessage = Selector("h3[data-test='error']")
+    await t.expect(errorMessage.innerText).contains('Sorry, this user has been locked out.')
+
 }, { preserveUrl: true });
 
 const problemUser = Role('https://www.saucedemo.com/', async t => {
