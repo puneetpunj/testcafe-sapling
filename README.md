@@ -4,6 +4,10 @@
 
 `npm run test:docker` - execute tests in docker image and generate allure report
 
+`npm run test:browserstack` - execute tests using browserstack api. Set the credentials in scripts/browserstack file.
+
+`npm run test:browserstack:parallel` - execute tests on browserstack on multiple browsers concurrently
+
 `npm run test:chrome` - execute tests in chrome browser
 
 `npm run test:firefox` - execute tests in firefox browser
