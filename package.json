@@ -16,9 +16,11 @@
     "generate:allure:report": "allure generate allure/allure-results --clean -o allure/allure-report",
     "open:allure:report": "allure open allure/allure-report",
     "docker:sh": " docker run -u root -v \"`pwd`/tests\":/app/tests -it --entrypoint /bin/sh testcafeimage",
-    "test:percy": "percy exec -- npx testcafe chrome ./tests",
     "test:saucedemo": "npx testcafe chrome ./tests --fixture-meta testType=sauceDemo -s takeOnFails=true ",
-    "execute:test:generate:report": "npm run test:chrome:2; npm run generate:allure:report"
+    "execute:test:generate:report": "npm run test:chrome:2; npm run generate:allure:report",
+    "test:percy": "./scripts/percy",
+    "test:browserstack": "./scripts/browserstack",
+    "test:browserstack:parallel": "./scripts/browserstack true"
   },
   "keywords": [
     "testcafe",
@@ -28,8 +30,8 @@
   "author": "Puneet Punj",
   "license": "ISC",
   "dependencies": {
-    "dotenv": "^8.2.0",
     "testcafe": "^1.8.8",
+    "testcafe-browser-provider-browserstack": "^1.13.0",
     "testcafe-reporter-allure": "^1.0.5",
     "xpath-to-css": "^1.0.5"
   },
