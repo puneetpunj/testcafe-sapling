@@ -70,7 +70,9 @@ def publishAllureReport(){
 }
 
 def removeTestcafeImageAndContainer(){
-    set +e
-    sh 'docker ps -a | awk \'{ print $1,$2 }\' | grep testcafeimage | awk \'{print $1 }\' | xargs -I {} docker rm {} | docker rmi testcafeimage'
-    set -e
+    sh '''
+        set +e
+        sh 'docker ps -a | awk \'{ print $1,$2 }\' | grep testcafeimage | awk \'{print $1 }\' | xargs -I {} docker rm {} | docker rmi testcafeimage'
+        set -e
+    '''
 }
