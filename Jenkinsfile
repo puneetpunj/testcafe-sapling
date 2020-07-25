@@ -29,7 +29,7 @@ pipeline {
         stage('Copy Allure Reports') {
              steps{
                 sh '''
-                    cont=docker ps -q -l
+                    cont=$(docker ps -q -l)
                     docker cp $cont:/app/allure allure
                     ls -la
                 '''
