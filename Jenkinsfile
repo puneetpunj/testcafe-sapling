@@ -21,7 +21,7 @@ pipeline {
 
         stage('🚜 Image & Container Cleanup') {
             steps {
-                sh 'docker ps -a | awk \'{ print $1,$2 }\' | grep testcafeimage | awk \'{print $1 }\' | xargs -I {} docker rm {} | docker rmi testcafeimage'
+                removeTestcafeImageAndContainer()
             }
         }
         
@@ -67,4 +67,10 @@ def publishAllureReport(){
             results: [[path: 'allure/allure-results']]
         ])
     }
+}
+
+def removeTestcafeImageAndContainer(){
+    set +e
+    sh 'docker ps -a | awk \'{ print $1,$2 }\' | grep testcafeimage | awk \'{print $1 }\' | xargs -I {} docker rm {} | docker rmi testcafeimage'
+    set -e
 }
