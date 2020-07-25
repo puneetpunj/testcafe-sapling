@@ -38,7 +38,9 @@ pipeline {
         }
 
         stage('🚜 Image & Container Cleanup') {
-            sh 'docker ps -a | awk \'{ print $1,$2 }\' | grep testcafeimage | awk \'{print $1 }\' | xargs -I {} docker rm {} | docker rmi testcafeimage'
+            steps {
+                sh 'docker ps -a | awk \'{ print $1,$2 }\' | grep testcafeimage | awk \'{print $1 }\' | xargs -I {} docker rm {} | docker rmi testcafeimage'
+            }
         }
         
          stage('👷 Build Image') {
