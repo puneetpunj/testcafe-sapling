@@ -12,7 +12,7 @@ pipeline {
             steps{
                 git branch: 'master',
                     credentialsId: '300b663a-e239-4628-b9ca-7329e2be872e',
-                    url: 'ssh://git@github.com:puneetpunj/testcafe-sapling.git'
+                    url: 'https://github.com/puneetpunj/testcafe-sapling.git'
             }
         }
          stage('build') {
