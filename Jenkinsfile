@@ -1,4 +1,5 @@
 pipeline {
+    agent any 
     stages {
         stage('cleanup') {
             steps{
@@ -26,6 +27,5 @@ pipeline {
                 sh label: 'Execute Tests', script: 'sh docker run -i testcafeimage'
              }
         }
-    
     }
 }
