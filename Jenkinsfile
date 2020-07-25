@@ -6,7 +6,7 @@ pipeline {
         choice(
             name: 'BUILD_IMAGE',
             choices: ['true' , 'false'],
-            description: 'An option to skip building image'),
+            description: 'An option to skip building image')
         choice(
             name: 'EXECUTE_TESTS',
             choices: ['true' , 'false'],
