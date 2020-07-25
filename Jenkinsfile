@@ -10,7 +10,7 @@ pipeline {
         choice(
             name: 'EXECUTE_TESTS',
             choices: ['true' , 'false'],
-            description: 'To skip docker run command'),
+            description: 'To skip docker run command')
     }
 
     stages {
