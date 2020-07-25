@@ -1,6 +1,9 @@
 pipeline {
+    
     agent any 
+
     stages {
+        
         stage('cleanup') {
             steps{
                 echo "Workspace location: ${env.WORKSPACE}"    
@@ -8,6 +11,7 @@ pipeline {
                 sh 'rm -rf node_modules/'
             }
         }
+
          stage('build') {
              steps{
                 sh label: 'Build Docker Image', script: 'npm run docker:build'
@@ -15,9 +19,20 @@ pipeline {
                 sh 'ls -l'
              }
         }
+        
         stage('Execute Tests') {
              steps{
                 sh label: 'Execute Tests', script: 'docker run -i testcafeimage'
+             }
+        }
+
+        stage('Copy Allure Reports') {
+             steps{
+                sh '''
+                    cont=docker ps -q -l
+                    docker cp $cont:/app/allure allure
+                    ls -la
+                '''
              }
         }
     }
