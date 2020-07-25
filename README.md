@@ -1,4 +1,39 @@
-# testcafe-sapling
+# 🌱 testcafe-sapling 🌱
+
+_"plant the sampling to grow your tree, why look for seed?"_
+
+![logo](img/sapling.png)
+
+## What is Included?
+
+#### CI
+
+Ready to go pipeline files available for :
+
+- Jenkins
+- Github Actions
+
+#### Docker
+
+- Docker commands to execute tests anywhere
+
+#### Browserstack
+
+- Scripts to execute tests on browserstack in simple steps
+
+#### Reporting
+
+- Built in support for Allure reporting
+
+#### Local Execution
+
+- Readily available commands to run tests in chrome, firefox or safari
+- Execute tests concurrently in multiple browsers instances
+- Emulate Mobile browsers locally with simple commands
+
+#### Visual Testing
+
+- Execute visual tests using percy with simple setup
 
 ## Execution Commands
 
@@ -22,15 +57,6 @@
 
 `npm run test:iphoneX` - execute tests in chrome browser using iphone X emulator. Also, takes screenshot on failure
 
-## Useful Visual Studio Code Extensions
-
-- TestCafe Snippets
-- TestCafe Test Runner
-
-  Right click on any test and click `Testcafe: Run Test(s) in Chrome`
-
-  ![alt text](img/TestRunnerExtension.jpg)
-
 ## Visual Testing with Percy
 
 - If you don't already have a project in percy. Go to https://percy.io/ and create one.
@@ -39,4 +65,17 @@
 - Go to "Integrations" tab and add integration for your github repository to view visual test results in git itself
 - Execute tests using `npm run test:percy`
 
-  ![alt text](img/PercyGit.jpg)
+  ![percy](img/PercyGit.jpg)
+
+## Jenkins Pipeline
+
+![jenkins pipeline](img/jenkinspipeline.png)
+
+## Useful Visual Studio Code Extensions
+
+- TestCafe Snippets
+- TestCafe Test Runner
+
+  Right click on any test and click `Testcafe: Run Test(s) in Chrome`
+
+  ![extension](img/TestRunnerExtension.jpg)
