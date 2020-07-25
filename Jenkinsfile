@@ -22,41 +22,42 @@ pipeline {
          stage('👷 Build Image') {
               when { expression { params.BUILD_IMAGE.toBoolean() } }
              steps{
-                sh label: 'Build Docker Image', script: 'npm run docker:build'
-                echo "After package installation"    
-                sh 'ls -l'
+                sh 'npm run docker:build'
              }
         }
         
         stage('✅ Execute Tests') {
             when { expression { params.EXECUTE_TESTS.toBoolean() } }
              steps{
-                sh label: 'Execute Tests', script: 'docker run -i testcafeimage'
+                sh 'docker run -i testcafeimage'
              }
         }
 
-        stage('🚜 Copy Allure Reports') {
-             steps{
-                sh '''
-                    cont=$(docker ps -q -l)
-                    docker cp $cont:/app/allure allure
-                    ls -la
-                '''
-             }
-        }
-
-        stage('🚀 Publish Reports') {
-            steps {
-                script {
-                    allure([
-                        includeProperties: false,
-                        jdk: '',
-                        properties: [],
-                        reportBuildPolicy: 'ALWAYS',
-                        results: [[path: 'allure/allure-results']]
-                    ])
-                }
+        post{
+            always {
+                copyReportFromDockerContainer()
+                publishAllureReport()
             }
         }
+    }
+}
+
+def copyReportFromDockerContainer(){
+  sh '''
+        cont=$(docker ps -q -l)
+        docker cp $cont:/app/allure allure
+        ls -la
+    '''
+}
+
+def publishAllureReport(){
+    script {
+        allure([
+            includeProperties: false,
+            jdk: '',
+            properties: [],
+            reportBuildPolicy: 'ALWAYS',
+            results: [[path: 'allure/allure-results']]
+        ])
     }
 }
