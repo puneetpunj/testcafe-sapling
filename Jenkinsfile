@@ -72,7 +72,8 @@ def publishAllureReport(){
 def removeTestcafeImageAndContainer(){
     sh '''
         set +e
-        docker ps -a | awk \'{ print $1,$2 }\' | grep testcafeimage | awk \'{print $1 }\' | xargs -I {} docker rm {} | docker rmi testcafeimage
+        docker rm $(docker stop $(docker ps -a -q --filter ancestor=testcafeimage --format="{{.ID}}"))
+        docker rmi testcafeimage
         set -e
     '''
 }
