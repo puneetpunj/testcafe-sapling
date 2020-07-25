@@ -31,12 +31,13 @@ pipeline {
              steps{
                 sh 'docker run -i testcafeimage'
              }
-        }
+        
 
-        post{
-            always {
-                copyReportFromDockerContainer()
-                publishAllureReport()
+            post{
+                always {
+                    copyReportFromDockerContainer()
+                    publishAllureReport()
+                }
             }
         }
     }
