@@ -18,6 +18,28 @@ pipeline {
     }
 
     stages {
+
+        stage('👍 Init') {
+
+            steps {
+                ansiColor('xterm') {
+                    script {
+                        wrap([$class: 'BuildUser']) {
+                            sh 'echo "Build job is initializing by: ${BUILD_USER}"'
+                        env.VERSION = "${env.TIMESTAMP}-${env.GIT_COMMIT.take(7)}"
+                        currentBuild.displayName = "${env.BUILD_DISPLAY_NAME} by ${BUILD_USER}"
+                        currentBuild.description = "Commit: ${env.GIT_COMMIT.take(7)},Branch: ${env.GIT_BRANCH}, By: ${BUILD_USER}"
+                        }                 
+                    }                    
+                    echo "Creating on-disk caches for container"
+                    sh 'mkdir -p $HOME/.npm'
+                }
+            }
+        }
+
+        stage('🚜 Image & Container Cleanup') {
+            sh "docker ps -a | awk '{ print $1,$2 }' | grep testcafeimage | awk '{print $1 }' | xargs -I {} docker rm {} | docker rmi testcafeimage"
+        }
         
          stage('👷 Build Image') {
               when { expression { params.BUILD_IMAGE.toBoolean() } }
