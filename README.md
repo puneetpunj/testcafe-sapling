@@ -25,7 +25,7 @@ Ready to go pipeline files available for :
 
 - Built in support for Allure reporting
 
-#### Local Execution
+#### Cross Browser Testing
 
 - Readily available commands to run tests in chrome, firefox or safari
 - Execute tests concurrently in multiple browsers instances
@@ -70,6 +70,10 @@ Ready to go pipeline files available for :
 ## Jenkins Pipeline
 
 ![jenkins pipeline](img/jenkinspipeline.png)
+
+## Allure Reporting
+
+![allurereport](img/allure.png)
 
 ## Useful Visual Studio Code Extensions
 
