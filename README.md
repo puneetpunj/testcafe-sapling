@@ -65,7 +65,16 @@ Ready to go pipeline files available for :
 - Go to "Integrations" tab and add integration for your github repository to view visual test results in git itself
 - Execute tests using `npm run test:percy`
 
-  ![percy](img/PercyGit.jpg)
+![percy](img/PercyGit.jpg)
+
+## Cross Browser/Platform Testing using Browserstack
+
+- Go to https://browserstack.com and create account, if you haven't got already.
+- Get your `BROWSERSTACK_USERNAME` and `BROWSERSTACK_ACCESS_KEY`
+- Create new file with name `.env` and update these values. Refer to .env.example
+- Execute tests using `npm run test:browserstack`
+- To execute tests using `npm run test:browserstack:parallel`
+- Edit your browser/platform requirement in `scripts/browserstack`
 
 ## Jenkins Pipeline
 
