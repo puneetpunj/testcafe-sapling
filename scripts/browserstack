@@ -1,12 +1,9 @@
 #!/bin/bash
 
-export BROWSERSTACK_USERNAME=set token here
-export BROWSERSTACK_ACCESS_KEY=set token here
-
 if ($1 eq 'true'); then
-    echo 'executing in parallel browsers'
-    npx testcafe -c 5 'browserstack:ie@11.0:Windows 10','browserstack:chrome@83.0:OS X Catalina' ./tests
+    echo 'Executing in parallel browsers'
+    npx dotenv npx testcafe -c 5 'browserstack:ie@11.0:Windows 10','browserstack:chrome@83.0:OS X Catalina' ./tests
 else
-    echo 'execute on safari'
-    npx testcafe "browserstack:safari@11.1:OS X High Sierra" ./tests
+    echo 'Execute tests on Safari'
+    npx dotenv npx testcafe "browserstack:safari@11.1:OS X High Sierra" ./tests
 fi

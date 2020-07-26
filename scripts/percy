@@ -1,5 +1,3 @@
 #!/bin/bash
 
-export PERCY_TOKEN=set token here
-
-npx percy exec -- npx testcafe chrome ./tests
+npx dotenv npx percy exec -- npx testcafe chrome ./tests
