@@ -76,6 +76,8 @@ Ready to go pipeline files available for :
 - To execute tests using `npm run test:browserstack:parallel`
 - Edit your browser/platform requirement in `scripts/browserstack`
 
+![browserstack](img/browserstack.png)
+
 ## Jenkins Pipeline
 
 ![jenkins pipeline](img/jenkinspipeline.png)
