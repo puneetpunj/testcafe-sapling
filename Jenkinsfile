@@ -14,7 +14,7 @@ pipeline {
         choice(
             name: 'PROD_EXECUTION',
             choices: ['true' , 'false'],
-            description: 'To run tests in UAT')
+            description: 'To run tests in Prod')
         choice(
             name: 'UAT_EXECUTION',
             choices: ['true' , 'false'],
@@ -22,7 +22,7 @@ pipeline {
         choice(
             name: 'DEV_EXECUTION',
             choices: ['true' , 'false'],
-            description: 'To run tests in UAT')
+            description: 'To run tests in Dev')
     }
 
     stages {
