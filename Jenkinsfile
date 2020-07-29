@@ -5,11 +5,11 @@ pipeline {
     parameters {
         choice(
             name: 'DELETE_IMAGES_CONTAINERS',
-            choices: ['true' , 'false'],
+            choices: ['false','true'],
             description: 'To skip image and container deletion')
         choice(
             name: 'BUILD_IMAGE',
-            choices: ['true' , 'false'],
+            choices: ['false','true'],
             description: 'An option to skip building image')
         
         choice(
