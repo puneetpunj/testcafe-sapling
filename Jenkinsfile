@@ -89,9 +89,9 @@ pipeline {
 def copyReportFromDockerContainer(env){
 
  sh '''
-    echo $(env)
+    echo '''env'''
     cont=$(docker ps -q -l)
-    docker cp $cont:/app/allure allure-$(env)
+    docker cp $cont:/app/allure allure-'''+env'''
     ls -la
 '''
 
@@ -118,3 +118,14 @@ def removeTestcafeImageAndContainer(){
         set -e
     '''
 }
+
+
+node {
+  stage('test') {
+        withCredentials([[...]]) {
+          def pipelineValue = "${pipelineParameter}"  //declare the parameter in groovy and use it in shellscript
+          sh '''
+             echo '''+pipelineValue+' abcd''''
+             '''
+        }
+}}
