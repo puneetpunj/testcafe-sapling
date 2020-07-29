@@ -86,14 +86,13 @@ pipeline {
     }
 }
 
-def copyReportFromDockerContainer(env){
+def copyReportFromDockerContainer(environment){
 
- sh '''
-    echo '''env'''
-    cont=$(docker ps -q -l)
-    docker cp $cont:/app/allure allure-'''+env'''
-    ls -la
-'''
+ sh """\
+    echo $environment \
+    cont=$(docker ps -q -l) \
+    docker cp $cont:/app/allure allure-$environment \
+"""
 
 }
 
