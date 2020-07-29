@@ -7,14 +7,22 @@ pipeline {
             name: 'BUILD_IMAGE',
             choices: ['true' , 'false'],
             description: 'An option to skip building image')
+        // choice(
+        //     name: 'EXECUTE_TESTS',
+        //     choices: ['true' , 'false'],
+        //     description: 'To skip docker run command')
         choice(
-            name: 'EXECUTE_TESTS',
+            name: 'PROD_EXECUTION',
             choices: ['true' , 'false'],
-            description: 'To skip docker run command')
-         choice(
-            name: 'ENVIRONMENT',
-            choices: ['UAT' , 'SIT'],
-            description: 'To skip docker run command')
+            description: 'To run tests in UAT')
+        choice(
+            name: 'UAT_EXECUTION',
+            choices: ['true' , 'false'],
+            description: 'To run tests in UAT')
+        choice(
+            name: 'DEV_EXECUTION',
+            choices: ['true' , 'false'],
+            description: 'To run tests in UAT')
     }
 
     stages {
@@ -32,8 +40,8 @@ pipeline {
              }
         }
         
-        stage('✅ Execute Tests') {
-            when { expression { params.EXECUTE_TESTS.toBoolean() } }
+        stage('✅ Execute Tests Prod') {
+            when { expression { params.PROD_EXECUTION.toBoolean() } }
              steps{
                 sh 'docker run -i testcafeimage'
              }
@@ -42,7 +50,34 @@ pipeline {
             post{
                 always {
                     copyReportFromDockerContainer()
-                    publishAllureReport()
+                    publishAllureReport('prod')
+                }
+            }
+        }
+        stage('✅ Execute Tests UAT') {
+            when { expression { params.UAT_EXECUTION.toBoolean() } }
+             steps{
+                sh 'docker run -i testcafeimage'
+             }
+        
+
+            post{
+                always {
+                    copyReportFromDockerContainer()
+                    publishAllureReport('uat')
+                }
+            }
+        }
+        stage('✅ Execute Tests Develop') {
+            when { expression { params.DEV_EXECUTION.toBoolean() } }
+             steps{
+                sh 'docker run -i testcafeimage'
+             }
+
+            post{
+                always {
+                    copyReportFromDockerContainer()
+                    publishAllureReport('develop')
                 }
             }
         }
@@ -57,14 +92,14 @@ def copyReportFromDockerContainer(){
     '''
 }
 
-def publishAllureReport(){
+def publishAllureReport(env){
     script {
         allure([
             includeProperties: false,
             jdk: '',
             properties: [],
             reportBuildPolicy: 'ALWAYS',
-            results: [[path: 'allure/allure-results']]
+            results: [[path: "allure/allure-results-$env"]]
         ])
     }
 }
