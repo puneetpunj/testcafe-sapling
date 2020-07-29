@@ -90,7 +90,7 @@ def copyReportFromDockerContainer(environment){
 
  sh """\
     echo $environment \
-    cont=$(docker ps -q -l) \
+    cont=\$(docker ps -q -l) \
     docker cp $cont:/app/allure allure-$environment \
 """
 
