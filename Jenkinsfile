@@ -101,7 +101,8 @@ def publishAllureReport(env){
             jdk: '',
             properties: [],
             reportBuildPolicy: 'ALWAYS',
-            results: [[path: "allure-$env/allure-results"]]
+            results: [[path: "allure-${env}/allure-results"]],
+            report: "allure-${env}/allure-report"
         ])
     }
 }
