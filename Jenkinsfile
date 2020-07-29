@@ -51,7 +51,7 @@ pipeline {
 
             post{
                 always {
-                    copyReportFromDockerContainer('prod')
+                    copyReportFromDockerContainer()
                     publishAllureReport('prod')
                 }
             }
@@ -65,7 +65,7 @@ pipeline {
 
             post{
                 always {
-                    copyReportFromDockerContainer('uat')
+                    copyReportFromDockerContainer()
                     publishAllureReport('uat')
                 }
             }
@@ -78,7 +78,7 @@ pipeline {
 
             post{
                 always {
-                    copyReportFromDockerContainer('develop')
+                    copyReportFromDockerContainer()
                     publishAllureReport('develop')
                 }
             }
