@@ -4,13 +4,14 @@ pipeline {
 
     parameters {
         choice(
+            name: 'DELETE_IMAGES_CONTAINERS',
+            choices: ['true' , 'false'],
+            description: 'To skip image and container deletion')
+        choice(
             name: 'BUILD_IMAGE',
             choices: ['true' , 'false'],
             description: 'An option to skip building image')
-        // choice(
-        //     name: 'EXECUTE_TESTS',
-        //     choices: ['true' , 'false'],
-        //     description: 'To skip docker run command')
+        
         choice(
             name: 'PROD_EXECUTION',
             choices: ['true' , 'false'],
@@ -28,6 +29,7 @@ pipeline {
     stages {
 
         stage('🚜 Image & Container Cleanup') {
+            when { expression { params.DELETE_IMAGES_CONTAINERS.toBoolean() } }
             steps {
                 removeTestcafeImageAndContainer()
             }
@@ -49,7 +51,7 @@ pipeline {
 
             post{
                 always {
-                    copyReportFromDockerContainer()
+                    copyReportFromDockerContainer('prod')
                     publishAllureReport('prod')
                 }
             }
@@ -63,7 +65,7 @@ pipeline {
 
             post{
                 always {
-                    copyReportFromDockerContainer()
+                    copyReportFromDockerContainer('uat')
                     publishAllureReport('uat')
                 }
             }
@@ -76,7 +78,7 @@ pipeline {
 
             post{
                 always {
-                    copyReportFromDockerContainer()
+                    copyReportFromDockerContainer('develop')
                     publishAllureReport('develop')
                 }
             }
@@ -99,7 +101,8 @@ def publishAllureReport(env){
             jdk: '',
             properties: [],
             reportBuildPolicy: 'ALWAYS',
-            results: [[path: "allure/allure-results-$env"]]
+            results: [[path: "allure/allure-results"]],
+            report: "allure_reports-$env"
         ])
     }
 }
