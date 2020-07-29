@@ -51,7 +51,7 @@ pipeline {
 
             post{
                 always {
-                    copyReportFromDockerContainer()
+                    copyReportFromDockerContainer('prod')
                     publishAllureReport('prod')
                 }
             }
@@ -65,7 +65,7 @@ pipeline {
 
             post{
                 always {
-                    copyReportFromDockerContainer()
+                    copyReportFromDockerContainer('uat')
                     publishAllureReport('uat')
                 }
             }
@@ -78,7 +78,7 @@ pipeline {
 
             post{
                 always {
-                    copyReportFromDockerContainer()
+                    copyReportFromDockerContainer('develop')
                     publishAllureReport('develop')
                 }
             }
@@ -86,10 +86,10 @@ pipeline {
     }
 }
 
-def copyReportFromDockerContainer(){
+def copyReportFromDockerContainer(env){
   sh '''
         cont=$(docker ps -q -l)
-        docker cp $cont:/app/allure allure
+        docker cp $cont:/app/allure allure-$env
         ls -la
     '''
 }
@@ -101,8 +101,7 @@ def publishAllureReport(env){
             jdk: '',
             properties: [],
             reportBuildPolicy: 'ALWAYS',
-            results: [[path: "allure/allure-results"]],
-            report: "allure_reports-$env"
+            results: [[path: "allure-$env/allure-results"]]
         ])
     }
 }
