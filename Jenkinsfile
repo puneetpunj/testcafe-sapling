@@ -87,9 +87,11 @@ pipeline {
 }
 
 def copyReportFromDockerContainer(env){
-    sh "cont=${docker ps -q -l}"
+
+    sh "cont=\$(docker ps -q -l)"
     sh "docker cp $cont:/app/allure allure-$env"
     sh "ls -la"
+
 }
 
 def publishAllureReport(env){
