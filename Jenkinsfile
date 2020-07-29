@@ -118,14 +118,3 @@ def removeTestcafeImageAndContainer(){
         set -e
     '''
 }
-
-
-node {
-  stage('test') {
-        withCredentials([[...]]) {
-          def pipelineValue = "${pipelineParameter}"  //declare the parameter in groovy and use it in shellscript
-          sh '''
-             echo '''+pipelineValue+' abcd''''
-             '''
-        }
-}}
