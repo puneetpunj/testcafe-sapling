@@ -1,0 +1,1 @@
+env | grep -e TESTCAFE -e ENVIRONMENT -e APPLICATION > allure/allure-results/environment.properties

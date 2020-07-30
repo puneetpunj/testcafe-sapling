@@ -16,4 +16,4 @@ WORKDIR /app
 COPY . .
 RUN npm i
 
-CMD npm run test:chrome:2; npm run write:envfile;
+CMD npm run test:chrome:2; ./scripts/generate-envfile-for-allure-report
