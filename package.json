@@ -13,7 +13,7 @@
     "docker:build": "docker build -t testcafeimage -f Docker/dockerfile .",
     "docker:run": "docker run -i -v \"`pwd`\":/app testcafeimage",
     "test:docker": "docker-compose up",
-    "write:envfile": "env > allure/allure-results/environment.properties",
+    "write:envfile": "env | grep -e TESTCAFE -e ENVIRONMENT -e APPLICATION > allure/allure-results/environment.properties",
     "generate:allure:report": "allure generate allure/allure-results --clean -o allure/allure-report",
     "open:allure:report": "allure open allure/allure-report",
     "docker:sh": " docker run -u root -v \"`pwd`/tests\":/app/tests -it --entrypoint /bin/sh testcafeimage",
