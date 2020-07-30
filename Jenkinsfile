@@ -45,7 +45,7 @@ pipeline {
         stage('✅ Execute Tests Prod') {
             when { expression { params.PROD_EXECUTION.toBoolean() } }
              steps{
-                sh 'docker run -i testcafeimage'
+                sh 'docker run -i -e ENVIRONMENT=prod testcafeimage'
              }
         
 
@@ -59,7 +59,7 @@ pipeline {
         stage('✅ Execute Tests UAT') {
             when { expression { params.UAT_EXECUTION.toBoolean() } }
              steps{
-                sh 'docker run -i testcafeimage'
+                sh 'docker run -i -e ENVIRONMENT=uat testcafeimage'
              }
         
 
@@ -73,7 +73,7 @@ pipeline {
         stage('✅ Execute Tests Develop') {
             when { expression { params.DEV_EXECUTION.toBoolean() } }
              steps{
-                sh 'docker run -i testcafeimage'
+                sh 'docker run -i -e ENVIRONMENT=develop testcafeimage'
              }
 
             post{
