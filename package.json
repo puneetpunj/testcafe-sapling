@@ -13,11 +13,12 @@
     "docker:build": "docker build -t testcafeimage -f Docker/dockerfile .",
     "docker:run": "docker run -i -v \"`pwd`\":/app testcafeimage",
     "test:docker": "docker-compose up",
+    "write:envfile": "env > allure/allure-results/environment.properties",
     "generate:allure:report": "allure generate allure/allure-results --clean -o allure/allure-report",
     "open:allure:report": "allure open allure/allure-report",
     "docker:sh": " docker run -u root -v \"`pwd`/tests\":/app/tests -it --entrypoint /bin/sh testcafeimage",
     "test:saucedemo": "npx testcafe chrome ./tests --fixture-meta testType=sauceDemo -s takeOnFails=true ",
-    "execute:test:generate:report": "npm run test:chrome:2; npm run generate:allure:report",
+    "execute:test:generate:report": "npm run test:chrome:2; npm run write:envfile; npm run generate:allure:report",
     "test:percy": "./scripts/percy",
     "test:browserstack": "./scripts/browserstack",
     "test:browserstack:parallel": "./scripts/browserstack true"
