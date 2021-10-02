@@ -31,12 +31,12 @@
   "license": "ISC",
   "dependencies": {
     "dotenv-cli": "^3.2.0",
-    "testcafe": "^1.8.8",
+    "testcafe": "^1.16.0",
     "testcafe-browser-provider-browserstack": "^1.13.0",
-    "testcafe-reporter-allure": "^1.0.5",
     "xpath-to-css": "^1.0.5"
   },
   "devDependencies": {
-    "@percy/testcafe": "^0.2.0"
+    "@percy/testcafe": "^0.2.0",
+    "testcafe-reporter-allure": "npm:@isaac.frontend/testcafe-reporter-allure@^2.2.1"
   }
 }
