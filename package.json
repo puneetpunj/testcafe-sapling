@@ -31,7 +31,7 @@
   "license": "ISC",
   "dependencies": {
     "dotenv-cli": "^3.2.0",
-    "testcafe": "^1.16.0",
+    "testcafe": "^15.1.317922",
     "testcafe-browser-provider-browserstack": "^1.13.0",
     "xpath-to-css": "^1.0.5"
   },
